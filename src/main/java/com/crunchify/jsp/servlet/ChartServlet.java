@@ -5,10 +5,13 @@
  */
 package com.crunchify.jsp.servlet;
 
+import edu.co.sergio.mundo.dao.DepartamentoDAO;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import javax.naming.spi.DirStateFactory;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,17 +47,23 @@ public class ChartServlet extends HttpServlet {
     }
 
     public JFreeChart getChart() {
+        
+        DepartamentoDAO dao = new DepartamentoDAO();
+        ArrayList datos = new ArrayList();
+        datos=dao.Bars();
+        
+        int kilos1 = (Integer)datos.get(0);
+        String id1 = (String)datos.get(1);
+        int kilos2 = (Integer)datos.get(2);
+        String id2 = (String)datos.get(3);
+        int kilos3 = (Integer)datos.get(4);
+        String id3 = (String)datos.get(5);
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(25.0, "Series 1", "Category 1");
-        dataset.addValue(34.0, "Series 1", "Category 2");
-        dataset.addValue(19.0, "Series 1", "Category 3");
-        dataset.addValue(29.0, "Series 2", "Category 1");
-        dataset.addValue(41.0, "Series 2", "Category 2");
-        dataset.addValue(33.0, "Series 2", "Category 3");
-        dataset.addValue(29.0, "Series 3", "Category 1");
-        dataset.addValue(41.0, "Series 3", "Category 2");
-        dataset.addValue(33.0, "Series 3", "Category 3");
+        
+        dataset.addValue(kilos1, id1, "Id's");
+        dataset.addValue(kilos2, id2, "Id's");
+        dataset.addValue(kilos3, id3, "Id's");
 
         JFreeChart chart = ChartFactory.createBarChart3D(
                 "Total Kilos Miel Por Colmena", // chart title
