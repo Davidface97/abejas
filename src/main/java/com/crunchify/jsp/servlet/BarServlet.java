@@ -20,7 +20,7 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.category.CategoryToPieDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.TextAnchor;
 
 public class BarServlet extends HttpServlet {
