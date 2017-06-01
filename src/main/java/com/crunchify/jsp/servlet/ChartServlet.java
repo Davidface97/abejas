@@ -31,53 +31,54 @@ import org.jfree.ui.RefineryUtilities;
 
 public class ChartServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        	response.setContentType("image/png");
-		OutputStream outputStream = response.getOutputStream();
-		JFreeChart chart = getChart();
-		int width = 500;
-		int height = 350;
-		ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("image/png");
+        OutputStream outputStream = response.getOutputStream();
+        JFreeChart chart = getChart();
+        int width = 500;
+        int height = 350;
+        ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
 
-	}
+    }
 
-	public JFreeChart getChart() {
-		
+    public JFreeChart getChart() {
+
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(25.0, "Series 1", "Category 1");   
-        dataset.addValue(34.0, "Series 1", "Category 2");   
-        dataset.addValue(19.0, "Series 2", "Category 1");   
-        dataset.addValue(29.0, "Series 2", "Category 2");   
-        dataset.addValue(41.0, "Series 3", "Category 1");   
-        dataset.addValue(33.0, "Series 3", "Category 2");   
+        dataset.addValue(25.0, "Series 1", "Category 1");
+        dataset.addValue(34.0, "Series 1", "Category 2");
+        dataset.addValue(19.0, "Series 1", "Category 3");
+        dataset.addValue(29.0, "Series 2", "Category 1");
+        dataset.addValue(41.0, "Series 2", "Category 2");
+        dataset.addValue(33.0, "Series 2", "Category 3");
+        dataset.addValue(29.0, "Series 3", "Category 1");
+        dataset.addValue(41.0, "Series 3", "Category 2");
+        dataset.addValue(33.0, "Series 3", "Category 3");
 
-		
         JFreeChart chart = ChartFactory.createBarChart3D(
-            "3D Bar Chart Demo",      // chart title
-            "Category",               // domain axis label
-            "Value",                  // range axis label
-            dataset,                  // data
-            PlotOrientation.VERTICAL, // orientation
-            true,                     // include legend
-            true,                     // tooltips
-            false                     // urls
+                "Total Kilos Miel Por Colmena", // chart title
+                "Colmena", // domain axis label
+                "Kilos", // range axis label
+                dataset, // data
+                PlotOrientation.VERTICAL, // orientation
+                true, // include legend
+                true, // tooltips
+                false // urls
         );
 
         CategoryPlot plot = chart.getCategoryPlot();
         CategoryAxis axis = plot.getDomainAxis();
         axis.setCategoryLabelPositions(
-            CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 8.0)
+                CategoryLabelPositions.createUpRotationLabelPositions(Math.PI / 8.0)
         );
-        
+
         CategoryItemRenderer renderer = plot.getRenderer();
         renderer.setItemLabelsVisible(true);
         BarRenderer r = (BarRenderer) renderer;
         r.setMaximumBarWidth(0.05);
         return chart;
 
-		
-	}
+    }
 
 }
