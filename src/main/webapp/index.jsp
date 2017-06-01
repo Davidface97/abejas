@@ -38,7 +38,7 @@ body {
     <img style="margin-left: 500px" src="BarServlet" />
     </div>
 
-    
+      
 
     Descargar Excel <a href="HSSFCreate">Descargar</a> 
     
