@@ -20,6 +20,7 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.category.CategoryToPieDataset;
 import org.jfree.ui.TextAnchor;
 
 public class BarServlet extends HttpServlet {
@@ -39,50 +40,22 @@ public class BarServlet extends HttpServlet {
 	public JFreeChart getChart() {
 		
         
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(15, "1", "451");
-        dataset.addValue(12, "1", "851");
-        dataset.addValue(10, "2", "362");
-        dataset.addValue(5,  "2",  "142"); 
-        
- JFreeChart chart = ChartFactory.createBarChart(
-            "Total Kilos Por Colmena",       // chart title
-            "Category",               // domain axis label
-            "Value",                  // range axis label
-            dataset,                  // data
-            PlotOrientation.VERTICAL, // the plot orientation
-            false,                    // include legend
-            true,
-            false
-        );
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        //Crear la capa de servicios que se enlace con el DAO
+        dataset.setValue("Ford", 23.3);
+        dataset.setValue("Chevy", 32.4);
+        dataset.setValue("Yugo", 44.2);
 
-        chart.setBackgroundPaint(Color.lightGray);
+        boolean legend = true;
+        boolean tooltips = false;
+        boolean urls = false;
 
-        // get a reference to the plot for further customisation...
-        CategoryPlot plot = chart.getCategoryPlot();
-        plot.setNoDataMessage("NO DATA!");
+        JFreeChart chart = ChartFactory.createPieChart("Cars", dataset, legend, tooltips, urls);
 
-        CategoryItemRenderer renderer = new CustomRenderer(
-            new Paint[] {Color.red, Color.blue, Color.green,
-                Color.yellow, Color.orange, Color.cyan,
-                Color.magenta, Color.blue}
-        );
-
-        renderer.setItemLabelsVisible(true);
-        ItemLabelPosition p = new ItemLabelPosition(
-            ItemLabelAnchor.CENTER, TextAnchor.CENTER, TextAnchor.CENTER, 45.0
-        );
-        renderer.setPositiveItemLabelPosition(p);
-        plot.setRenderer(renderer);
-
-        // change the margin at the top of the range axis...
-        ValueAxis rangeAxis = plot.getRangeAxis();
-        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        rangeAxis.setLowerMargin(0.15);
-        rangeAxis.setUpperMargin(0.15);
-
-        return chart;
+        chart.setBorderPaint(Color.GREEN);
+        chart.setBorderStroke(new BasicStroke(5.0f));
+        chart.setBorderVisible(true);
 		
 	}
 
-}
+}   
