@@ -33,12 +33,10 @@
       
     
         %>
-        <center>
-            <div align="left" style="width: 500">
+            <div align="center" style="width: 500">
                 <img style="margin-left: 60px" src="ChartServlet" />
                 <img style="margin-left: 200px" src="BarServlet" />
             </div>
-        </center>
 
 
         Descargar Excel <a href="HSSFCreate">Descargar</a> 
