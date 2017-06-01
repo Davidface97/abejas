@@ -34,11 +34,12 @@ body {
     
     %>
     <div align="left" style="width: 500">
-    <img src="ChartServlet" /><br/>
+    <img src="ChartServlet" />
+    <img src="BarServlet" />
     </div>
-    <div align="right" style="width: 500">
-    <img src="BarServlet" /><br/>
-    </div>
+
+    
+
     Descargar Excel <a href="HSSFCreate">Descargar</a> 
     
 </body>
