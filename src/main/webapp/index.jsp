@@ -34,8 +34,8 @@
     
         %>
             <div align="center" style="width: 500">
-                <img style="margin-left: 60px" src="ChartServlet" />
-                <img style="margin-left: 200px" src="BarServlet" />
+                <img src="ChartServlet" />
+                <img style="margin-left: 160px" src="BarServlet" />
             </div>
 
 
