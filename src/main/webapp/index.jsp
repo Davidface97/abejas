@@ -35,7 +35,7 @@ body {
     %>
     <div align="left" style="width: 500">
     <img src="ChartServlet" />
-    <img src="BarServlet" />
+    <img style="margin-left: 500px" src="BarServlet" />
     </div>
 
     
