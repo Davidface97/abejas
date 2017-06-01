@@ -33,7 +33,7 @@ body {
          <h1> <%=departamento.getNom_departamento()%> </h1><br/> 
          <%      
           }
-       }
+       }  
       
     
     %>
