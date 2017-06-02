@@ -211,5 +211,35 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
 
         return ArrayBars;
     }
+    
+        public ArrayList Pie() {
+        
+        Connection connection = null;
+        try {
+            connection = Conexion.getConnection();
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String query = "select PanalesConCera, PanalesConAlimento,PanalesConCria,PanalesVacios from Colmena where Id_Colmena = 1";
+        Statement st = null;
+        ResultSet rs = null;
+        ArrayList ArrayPie = new ArrayList();
+
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                ArrayPie.add(rs.getInt(1));
+                ArrayPie.add(rs.getInt(2));
+                ArrayPie.add(rs.getInt(3));
+                ArrayPie.add(rs.getInt(4));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return ArrayPie;
+    }
 
 }

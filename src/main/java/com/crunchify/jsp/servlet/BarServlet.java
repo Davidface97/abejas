@@ -1,9 +1,11 @@
 package com.crunchify.jsp.servlet;
 
+import edu.co.sergio.mundo.dao.DepartamentoDAO;
 import java.awt.Color;
 import java.awt.Paint;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,19 +40,32 @@ public class BarServlet extends HttpServlet {
 
     public JFreeChart getChart() {
 
+        DepartamentoDAO dao = new DepartamentoDAO();
+        ArrayList datos = new ArrayList();
+        datos = dao.Pie();
+        int Sumatoria=0;
+        
+        for(int i=0; i<datos.size(); i++){
+        int paneles = (Integer) datos.get(i);
+        Sumatoria=Sumatoria+paneles;
+        }
+        
         DefaultPieDataset dataset = new DefaultPieDataset();
         //Crear la capa de servicios que se enlace con el DAO
-        dataset.setValue("Ford", 23.3);
-        dataset.setValue("Chevy", 32.4);
-        dataset.setValue("Yugo", 44.2);
+        int alimentos = (Integer)datos.get(1);
         
+        int tortaalimentos = (alimentos*100)/Sumatoria;
+        int demas = ((Sumatoria-alimentos)*100)/Sumatoria;
+        
+        dataset.setValue("Otros Panales", demas);
+        dataset.setValue("Paneles Con Alimento", tortaalimentos);
+
         boolean textoinferior = true;
         boolean tool = true;
         boolean urls = false;
-        
+
         JFreeChart chart = ChartFactory.createPieChart("Kilos", dataset, textoinferior, tool, urls);
-        
-        
+
         return chart;
     }
 
