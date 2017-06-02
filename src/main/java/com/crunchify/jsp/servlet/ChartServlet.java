@@ -61,9 +61,9 @@ public class ChartServlet extends HttpServlet {
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         
-        dataset.addValue(kilos1, id1, "Id's");
-        dataset.addValue(kilos2, id2, "Id's");
-        dataset.addValue(kilos3, id3, "Id's");
+        dataset.addValue(kilos1, id1, "Colmena 1");
+        dataset.addValue(kilos2, id2, "Colmena 2");
+        dataset.addValue(kilos3, id3, "Colmena 3");
 
         JFreeChart chart = ChartFactory.createBarChart3D(
                 "Total Kilos Miel Por Colmena", // chart title

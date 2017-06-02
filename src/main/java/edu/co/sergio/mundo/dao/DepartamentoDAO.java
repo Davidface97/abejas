@@ -221,7 +221,7 @@ public class DepartamentoDAO implements IBaseDatos<Departamento> {
             Logger.getLogger(DepartamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String query = "select PanalesConCera, PanalesConAlimento,PanalesConCria,PanalesVacios from Colmena where Id_Colmena = 1";
+        String query = "select PanalesConCera, PanalesConAlimento,PanalesConCria,PanalesVacios from Colmena where Id_Colmena = 2";
         Statement st = null;
         ResultSet rs = null;
         ArrayList ArrayPie = new ArrayList();
