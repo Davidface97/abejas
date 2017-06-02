@@ -50,21 +50,42 @@ public class ChartServlet extends HttpServlet {
         
         DepartamentoDAO dao = new DepartamentoDAO();
         ArrayList datos = new ArrayList();
-        datos=dao.Bars();
-        
-        int kilos1 = (Integer)datos.get(0);
-        String id1 = (String)datos.get(1);
-        int kilos2 = (Integer)datos.get(2);
-        String id2 = (String)datos.get(3);
-        int kilos3 = (Integer)datos.get(4);
-        String id3 = (String)datos.get(5);
-
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        datos=dao.Bars();
+        boolean checker1 = false;
+        boolean checker2 = false;
+        int kilos = 0;
+        String id="";
         
-        dataset.addValue(kilos1, id1, "Colmena 1");
-        dataset.addValue(kilos2, id2, "Colmena 2");
-        dataset.addValue(kilos3, id3, "Colmena 3");
+        //int kilos1 = (Integer)datos.get(0);
+        //String id1 = (String)datos.get(1);
+        //int kilos2 = (Integer)datos.get(2);
+        //String id2 = (String)datos.get(3);
+        //int kilos3 = (Integer)datos.get(4);
+        //String id3 = (String)datos.get(5);
 
+        for(int i=0; i<datos.size(); i++){
+            
+            if(i== 0 || i%2==0){
+                kilos = (Integer)datos.get(i);
+                checker1 = true;
+            } else {
+                id = (String)datos.get(i);
+                checker2 = true;
+            }
+            
+            if(checker1==true && checker2== true){
+                dataset.addValue(kilos, id, "Colmena "+(i+1));
+                checker1 = false;
+                checker2 = false;
+            }
+            
+        }
+
+        //dataset.addValue(kilos1, id1, "Colmena 1");
+        //dataset.addValue(kilos2, id2, "Colmena 2");
+        //dataset.addValue(kilos3, id3, "Colmena 3");
+        
         JFreeChart chart = ChartFactory.createBarChart3D(
                 "Total Kilos Miel Por Colmena", // chart title
                 "Colmena", // domain axis label
