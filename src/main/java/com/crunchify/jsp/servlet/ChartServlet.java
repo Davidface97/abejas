@@ -65,7 +65,7 @@ public class ChartServlet extends HttpServlet {
         //String id3 = (String)datos.get(5);
 
         for(int i=0; i<datos.size(); i++){
-            
+              
             if(i== 0 || i%2==0){
                 kilos = (Integer)datos.get(i);
                 checker1 = true;
