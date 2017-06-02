@@ -75,7 +75,7 @@ public class ChartServlet extends HttpServlet {
             }
             
             if(checker1==true && checker2== true){
-                dataset.addValue(kilos, id, "Colmena "+(i+1));
+                dataset.addValue(kilos, id, "Colmena "+((i+1)/2));
                 checker1 = false;
                 checker2 = false;
             }
