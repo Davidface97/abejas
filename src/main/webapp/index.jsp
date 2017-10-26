@@ -12,28 +12,25 @@
         }
     </style>
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
-  <script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(["init", {
-      appId: "e9e9af49-494f-4337-87cb-16705b3dbd57",
-      autoRegister: false, /* Set to true to automatically prompt visitors */
-      notifyButton: {
-          enable: true /* Set to false to hide */
-      }
-    }]);
-OneSignal.push(function() {
-  /* These examples are all valid */
-  OneSignal.getUserId(function(userId) {
-    console.log("OneSignal User ID:", userId);
-    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
-  });
-               
-  OneSignal.getUserId().then(function(userId) {
-    console.log("OneSignal User ID:", userId);
-    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
-  });
-});
-  </script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(["init", {
+                appId: "e9e9af49-494f-4337-87cb-16705b3dbd57",
+                autoRegister: false, /* Set to true to automatically prompt visitors */
+                notifyButton: {
+                    enable: true /* Set to false to hide */
+                }
+            }]);
+        var Usuario;
+        OneSignal.push(function () {
+            /* These examples are all valid */
+            OneSignal.getUserId(function (userId) {
+                console.log("OneSignal User ID:", userId);
+                alert(userId);
+                // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+            });
+        });
+    </script>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -56,10 +53,10 @@ OneSignal.push(function() {
       
     
         %>
-            <div align="center" style="width: 500">
-                <img src="BarServlet" />
-                <img style="margin-left: 160px" src="ChartServlet" />
-            </div>
+        <div align="center" style="width: 500">
+            <img src="BarServlet" />
+            <img style="margin-left: 160px" src="ChartServlet" />
+        </div>
 
 
         Descargar Excel <a href="HSSFCreate">Descargar</a> 
