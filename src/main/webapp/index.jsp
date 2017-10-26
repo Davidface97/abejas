@@ -16,11 +16,23 @@
     var OneSignal = window.OneSignal || [];
     OneSignal.push(["init", {
       appId: "e9e9af49-494f-4337-87cb-16705b3dbd57",
-      autoRegister: true, /* Set to true to automatically prompt visitors */
+      autoRegister: false, /* Set to true to automatically prompt visitors */
       notifyButton: {
           enable: true /* Set to false to hide */
       }
     }]);
+OneSignal.push(function() {
+  /* These examples are all valid */
+  OneSignal.getUserId(function(userId) {
+    console.log("OneSignal User ID:", userId);
+    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+  });
+               
+  OneSignal.getUserId().then(function(userId) {
+    console.log("OneSignal User ID:", userId);
+    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+  });
+});
   </script>
 
     <head>
