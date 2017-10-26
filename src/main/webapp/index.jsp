@@ -11,6 +11,17 @@
                 url('http://cdn.crunchify.com/wp-content/uploads/2013/03/Crunchify.bg_.300.png');
         }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+      appId: "e9e9af49-494f-4337-87cb-16705b3dbd57",
+      autoRegister: true, /* Set to true to automatically prompt visitors */
+      notifyButton: {
+          enable: true /* Set to false to hide */
+      }
+    }]);
+  </script>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
